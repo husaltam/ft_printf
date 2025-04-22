@@ -22,27 +22,45 @@ ft_printf is a 42 School project that recodes the standard printf() function fro
 | `%X`       | Uppercase hexadecimal (base 16)      | `ft_printf("%X", 255)`                   | `FF`                 |
 | `%%`       | Percent sign                         | `ft_printf("%%")`                        | `%`                  |
 ---
-## 🛠 Features  
-- **`%c`** : Single character → `ft_printf("%c", 'A')` → `A`  
-- **`%s`** : String → `ft_printf("%s", "hello")` → `hello`  
-- **`%p`** : Pointer (hex) → `ft_printf("%p", ptr)` → `0x7ffeee2b4d38`  
-- **`%d`/`%i`** : Signed integer → `ft_printf("%d", -42)` → `-42`  
-- **`%u`** : Unsigned integer → `ft_printf("%u", 255)` → `255`  
-- **`%x`** : Lowercase hex → `ft_printf("%x", 255)` → `ff`  
-- **`%X`** : Uppercase hex → `ft_printf("%X", 255)` → `FF`  
-- **`%%`** : Percent sign → `ft_printf("%%")` → `%`
----
-## 🛠 Features  
-📌 **Supported Conversions**  
 
-|               | Specifier | Example Usage          | Output               |
-|---------------|-----------|------------------------|----------------------|
-| **Character** | `%c`      | `ft_printf("%c", 'Z')` | `Z`                  |
-| **String**    | `%s`      | `ft_printf("%s", "42")`| `42`                 |
-| **Pointer**   | `%p`      | `ft_printf("%p", ptr)` | `0x7ffd42abcde0`     |
-| **Integer**   | `%d`/`%i` | `ft_printf("%d", -42)` | `-42`                |
-| **Unsigned**  | `%u`      | `ft_printf("%u", 42)`  | `42`                 |
-| **Hex (low)** | `%x`      | `ft_printf("%x", 255)` | `ff`                 |
-| **Hex (up)**  | `%X`      | `ft_printf("%X", 255)` | `FF`                 |
-| **Percent**   | `%%`      | `ft_printf("%%")`      | `%`                  |
+## ⚙️ Installation & Usage
+1. Compile the Library
+```
+make        # Compiles libftprintf.a
+make clean  # Removes object files
+make fclean # Full clean (objects + library)
+make re     # Rebuilds everything
+```
+2. Use in Your Code
+```
+#include "ft_printf.h"
+
+int main() {
+    int count = ft_printf("Hello, %s! %d%% awesome!\n", "world", 100);
+    return (0);
+}
+```
+### Output:
+```
+Hello, world! 100% awesome!
+```
 ---
+## 🔄 Memory Management
+```
++-----------------------+
+| No leaks!             |
+| - Uses malloc/free    |
+| - Static buffers only |
++-----------------------+
+```
+## 🧪 Testing
+Compare with real printf:
+```
+int real = printf("Real: %d\n", 42);
+int fake = ft_printf("Fake: %d\n", 42);
+assert(real == fake);  // Should match!
+```
+---
+
+
+Crafted with ❤️ by [husaltam] @ 42 School
